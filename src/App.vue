@@ -1,16 +1,18 @@
 <template>
   <div id="app">
-    <hello></hello>
+<!--     <hello></hello> -->
+    <todo></todo>
   </div>
 </template>
 
 <script>
 import Hello from './components/Hello'
-
+import Todo from './components/Todo'
 export default {
   name: 'app',
   components: {
-    Hello
+    Hello,
+    Todo
   }
 }
 </script>
