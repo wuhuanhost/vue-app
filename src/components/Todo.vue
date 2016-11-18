@@ -2,7 +2,7 @@
   <div class="todo">
     <h2 class="error" v-if="this.$store.state.error">清单内容不能为空</h2>
     <hr/>
-    <input placeholder="输入你的清单内容" v-model="todo" class="input" />
+    <input placeholder="输入你的清单内容" v-model="todo" class="input" @keyup.enter="add" />
     <button @click="add">添加</button>
     <div class="todolist">
       <div class="item" v-for="item in this.todolist">
@@ -22,6 +22,7 @@ export default {
   name: 'todo',
   data () {
     return {
+      todo: '',
       todolist: this.$store.state.todolist
     }
   },
@@ -76,6 +77,7 @@ export default {
     width: 100px;
     border-radius: 9px;
     border: 1px solid #999999;
+    cursor:pointer;
   }
   
   .todolist {
