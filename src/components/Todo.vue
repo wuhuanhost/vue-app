@@ -31,7 +31,6 @@ export default {
         var item = {}
         item.todo = this.todo
         item.isDel = false
-        this.todo = ''
         this.$store.commit('add', item)
       }
     },
