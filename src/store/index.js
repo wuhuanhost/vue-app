@@ -6,8 +6,19 @@ export default new Vuex.Store({
   state: {
     error: false,
     todolist: [
-        {todo: '写文档', isDel: true}, {todo: '编码', isDel: false}, {todo: '测试', isDel: false}
+        {id: 0, todo: '写文档', done: true}, {id: 1, todo: '编码', done: false}, {id: 2, todo: '测试', done: false}
     ]
   },
-  mutations: todo
+  mutations: todo,
+  getters: {
+    doneTodo: state => {
+      return state.todolist.filter(item => item.done)
+    },
+    activeTodo: state => {
+      return state.todolist.filter(item => !item.done)
+    },
+    allTodo: state => {
+      return state.todolist
+    }
+  }
 })
