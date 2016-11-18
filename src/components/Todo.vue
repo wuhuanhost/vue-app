@@ -1,5 +1,6 @@
 <template>
     <div class="todo">
+      <h2 class="error" v-if="this.$store.state.error">清单内容不能为空</h2>
         <hr/>
         <input placeholder="输入你的清单内容" v-model="todo" class="input" />
         <button @click="add">添加</button>
@@ -24,11 +25,15 @@ export default {
   methods: {
     add: function (event) {
       console.log(this.todo)
-      var item = {}
-      item.todo = this.todo
-      item.isDel = false
-      this.todo = ''
-      this.$store.commit('add', item)
+      if (this.todo === '') {
+        this.$store.commit('errmsg')
+      } else {
+        var item = {}
+        item.todo = this.todo
+        item.isDel = false
+        this.todo = ''
+        this.$store.commit('add', item)
+      }
     },
     del: function (event) {
       var key = event.target.value
@@ -81,6 +86,11 @@ export default {
     
     .del {
         text-decoration: line-through
+    }
+
+    .error{
+      color:red;
+      
     }
 
 </style>
